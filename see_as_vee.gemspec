@@ -25,8 +25,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'simple_xlsx_reader'
-  spec.add_dependency 'axlsx'
+  # subsequent versions seem not compatible with ruby 2.4
+  # due to a new ostruct keyword:
+  # TypeError:
+  #   {:keyword_init=>true} is not a symbol0
+  spec.add_dependency 'simple_xlsx_reader', '~> 1.0.5'
+  spec.add_dependency 'caxlsx'
   spec.add_dependency 'zip-zip'
   # spec.add_dependency 'ruby-filemagic', require: false
 
